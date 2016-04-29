@@ -14,6 +14,11 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+
+    self.window.movableByWindowBackground  = YES;
+    self.window.titlebarAppearsTransparent = YES;
+    self.window.titleVisibility = NSWindowTitleHidden;
+    self.window.styleMask |= NSFullSizeContentViewWindowMask;
     
     TestVC *rootVC = [[TestVC alloc] initWithNibName:@"TestVC" bundle:nil];
     CCNNavigationController *navigationController = [[CCNNavigationController alloc] initWithRootViewController:rootVC];

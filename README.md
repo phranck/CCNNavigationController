@@ -34,6 +34,7 @@ There is nothing special in using `CCNNavigationController`. If you are familar 
 }
 ```
 
+![CCNNavigationController-Example](img/CCNNavigationController-Example.png)
 
 
 ## Contribution
