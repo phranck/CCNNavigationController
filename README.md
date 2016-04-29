@@ -2,12 +2,12 @@
 
 A Navigation Controller for Mac OS X that acts mostly like the counterpart on iOS - `UINavigationController`, using the excact method naming (with some additions).
 
-The original idea for this controller came from [Heiko Dreyer's BFNavigationController](https://github.com/bfolder/BFNavigationController). First I forked the repo, but decided to make my own due to too many changes and additions that has been made. So, it might be possible that parts of this code looks slightly similar to his one. (-;
+The original idea for this controller came from [Heiko Dreyer's BFNavigationController](https://github.com/bfolder/BFNavigationController). First I forked his repo, but decided to make my own due to too many changes and additions that has been made. So, it might be possible that parts of this code looks slightly similar to his one. (-;
 
 
 ## Installation
 
-You can do it manually by copying all `.h` and `.m` files into your project, or you add the following line to you Podfile:
+You can do it manually by copying all `.h` and `.m` files into your project, or you add the following line to your Podfile:
 
 ```CocoaPods
 pod 'CCNNavigationController'
@@ -16,7 +16,7 @@ pod 'CCNNavigationController'
 
 ## How to use it
 
-There is nothing special in using `CCNNavigationController`. If you are familar with iOS' `UINavigationController` you should get it right from the start. Unlike Heiko's `BFNavigationController` there is no need to give an initial frame. Just set your `rootViewController` and you're done. The rest will be handled automatically. You can also set some configuration options via `CCNNavigationControllerConfiguration` object.
+There is nothing special in using `CCNNavigationController`. If you are familar with iOS' `UINavigationController` you should get it right from the start. Unlike Heiko's `BFNavigationController` there is no need to give an initial frame. Just set your `rootViewController` and you're done. The rest will be handled automatically. You can also set some configuration options via the `CCNNavigationControllerConfiguration` object.
 
 ```Objective-C
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
