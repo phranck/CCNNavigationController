@@ -18,6 +18,10 @@ pod 'CCNNavigationController'
 
 There is nothing special in using `CCNNavigationController`. If you are familar with iOS' `UINavigationController` you should get it right from the start. Unlike Heiko's `BFNavigationController` there is no need to give an initial frame. Just set your `rootViewController` and you're done. The rest will be handled automatically. You can also set some configuration options via the `CCNNavigationControllerConfiguration` object.
 
+There are two ways to give the navigation controller its rootViewController:
+
+**First**: Set the rootViewController directly during initialization of `CCNNavigationController`.
+
 ```Objective-C
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
@@ -33,6 +37,27 @@ There is nothing special in using `CCNNavigationController`. If you are familar 
    ...
 }
 ```
+
+**Second**: Initialize `CCNNavigationController` with a `nil` rootViewController, and set it later on by directly setting the property `viewControllers` first object.
+
+```Objective-C
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
+   CCNNavigationController *navigationController = [[CCNNavigationController alloc] initWithRootViewController:nil];
+   
+   // make the navigation controller the window's content view controller
+   self.window.contentViewController = navigationController;
+
+
+   //  do some other stuff...
+   
+   // initialize your rootViewController and set it as navigationController's first object
+   MyRootVC *rootVC = [[MyRootVC alloc] init];
+   navigationController.viewControllers = @[ rootVC ];
+}
+```
+
+
 
 ![CCNNavigationController-Example](img/CCNNavigationController-Example.png)
 
