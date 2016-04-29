@@ -52,6 +52,10 @@ static NSImage *_image;
     self.imageView.image = _image;
 }
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+}
+
 - (IBAction)previousButtonAction:(NSButton *)button {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -63,16 +67,14 @@ static NSImage *_image;
 }
 
 - (IBAction)popTooRootButtonAction:(id)sender {
-    NSArray *poppedVCs = [self.navigationController popToRootViewControllerAnimated:YES];
-    NSLog(@"poppedVCs: %@", poppedVCs);
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)popToFiveButtonAction:(id)sender {
     if (self.navigationController.viewControllers.count < 4) return;
     
     NSViewController *numberFive = [self.navigationController.viewControllers objectAtIndex:4];
-    NSArray *poppedVCs = [self.navigationController popToViewController:numberFive animated:YES];
-    NSLog(@"poppedVCs: %@", poppedVCs);
+    [self.navigationController popToViewController:numberFive animated:YES];
 }
 
 - (NSString *)description {
