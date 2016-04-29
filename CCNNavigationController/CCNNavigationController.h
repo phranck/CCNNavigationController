@@ -73,7 +73,7 @@
 #pragma mark - Accessing Items on the Navigation Stack
 @property (nonatomic, readonly, strong) __kindof NSViewController *topViewController;
 @property (nonatomic, readonly, strong) __kindof NSViewController *visibleViewController;
-@property (nonatomic) NSArray<__kindof NSViewController *> *viewControllers;
+@property (nonatomic, copy) NSArray<__kindof NSViewController *> *viewControllers;
 
 
 #pragma mark - Pushing and Popping Stack Items
