@@ -20,7 +20,7 @@ There is nothing special in using `CCNNavigationController`. If you are familar 
 
 There are two ways to give the navigation controller its rootViewController:
 
-#### FIRST: Set the rootViewController directly during initialization of `CCNNavigationController`.
+##### 1. Set the rootViewController directly during initialization of `CCNNavigationController`.
 
 ```Objective-C
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -38,7 +38,7 @@ There are two ways to give the navigation controller its rootViewController:
 }
 ```
 
-#### SECOND: Initialize `CCNNavigationController` with a `nil` rootViewController
+##### 2. Initialize `CCNNavigationController` with a `nil` rootViewController
 
 ```Objective-C
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
