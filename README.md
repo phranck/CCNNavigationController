@@ -21,7 +21,7 @@ There is nothing special in using `CCNNavigationController`. If you are familar 
 ```Objective-C
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-   MyRootVC *rootVC = [MyRootVC alloc] init];
+   MyRootVC *rootVC = [[MyRootVC alloc] init];
    CCNNavigationController *navigationController = [[CCNNavigationController alloc] initWithRootViewController:rootVC];
     
    // you can set some configuration options
