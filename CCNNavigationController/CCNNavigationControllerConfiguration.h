@@ -27,6 +27,7 @@
  THE SOFTWARE.
  */
 
+#import <AppKit/AppKit.h>
 
 typedef NS_ENUM(NSUInteger, CCNNavigationControllerTransition) {
     CCNNavigationControllerTransitionShiftLeft = 0,             // push from right to left

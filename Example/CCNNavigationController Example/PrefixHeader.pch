@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  CCNNavigationController Example
+//
+//  Created by Frank Gregor on 29/04/16.
+//  Copyright © 2016 cocoa:naut. All rights reserved.
+//
+
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "CCNNavigationController.h"
+
+
+#endif

@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FDDAEB7B1CD37DAF00E9B672 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB7A1CD37DAF00E9B672 /* AppDelegate.m */; };
+		FDDAEB7E1CD37DAF00E9B672 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB7D1CD37DAF00E9B672 /* main.m */; };
+		FDDAEB801CD37DAF00E9B672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB7F1CD37DAF00E9B672 /* Assets.xcassets */; };
+		FDDAEB831CD37DAF00E9B672 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB811CD37DAF00E9B672 /* MainMenu.xib */; };
+		FDDAEB8F1CD37DE900E9B672 /* CCNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB8C1CD37DE900E9B672 /* CCNNavigationController.m */; };
+		FDDAEB901CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB8E1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m */; };
+		FDDAEB941CD37E6C00E9B672 /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB921CD37E6C00E9B672 /* TestVC.m */; };
+		FDDAEB951CD37E6C00E9B672 /* TestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB931CD37E6C00E9B672 /* TestVC.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FDDAEB761CD37DAF00E9B672 /* CCNNavigationController Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCNNavigationController Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDDAEB791CD37DAF00E9B672 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FDDAEB7A1CD37DAF00E9B672 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FDDAEB7D1CD37DAF00E9B672 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FDDAEB7F1CD37DAF00E9B672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FDDAEB821CD37DAF00E9B672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FDDAEB841CD37DAF00E9B672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDDAEB8B1CD37DE900E9B672 /* CCNNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNNavigationController.h; sourceTree = "<group>"; };
+		FDDAEB8C1CD37DE900E9B672 /* CCNNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNNavigationController.m; sourceTree = "<group>"; };
+		FDDAEB8D1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNNavigationControllerConfiguration.h; sourceTree = "<group>"; };
+		FDDAEB8E1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNNavigationControllerConfiguration.m; sourceTree = "<group>"; };
+		FDDAEB911CD37E6C00E9B672 /* TestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
+		FDDAEB921CD37E6C00E9B672 /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
+		FDDAEB931CD37E6C00E9B672 /* TestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestVC.xib; sourceTree = "<group>"; };
+		FDDAEB961CD37EE800E9B672 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FDDAEB731CD37DAF00E9B672 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FDDAEB6D1CD37DAF00E9B672 = {
+			isa = PBXGroup;
+			children = (
+				FDDAEB781CD37DAF00E9B672 /* CCNNavigationController Example */,
+				FDDAEB771CD37DAF00E9B672 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FDDAEB771CD37DAF00E9B672 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDDAEB761CD37DAF00E9B672 /* CCNNavigationController Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FDDAEB781CD37DAF00E9B672 /* CCNNavigationController Example */ = {
+			isa = PBXGroup;
+			children = (
+				FDDAEB791CD37DAF00E9B672 /* AppDelegate.h */,
+				FDDAEB7A1CD37DAF00E9B672 /* AppDelegate.m */,
+				FDDAEB911CD37E6C00E9B672 /* TestVC.h */,
+				FDDAEB921CD37E6C00E9B672 /* TestVC.m */,
+				FDDAEB931CD37E6C00E9B672 /* TestVC.xib */,
+				FDDAEB7F1CD37DAF00E9B672 /* Assets.xcassets */,
+				FDDAEB811CD37DAF00E9B672 /* MainMenu.xib */,
+				FDDAEB841CD37DAF00E9B672 /* Info.plist */,
+				FDDAEB961CD37EE800E9B672 /* PrefixHeader.pch */,
+				FDDAEB8A1CD37DE900E9B672 /* CCNNavigationController */,
+				FDDAEB7C1CD37DAF00E9B672 /* Supporting Files */,
+			);
+			path = "CCNNavigationController Example";
+			sourceTree = "<group>";
+		};
+		FDDAEB7C1CD37DAF00E9B672 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FDDAEB7D1CD37DAF00E9B672 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDDAEB8A1CD37DE900E9B672 /* CCNNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				FDDAEB8B1CD37DE900E9B672 /* CCNNavigationController.h */,
+				FDDAEB8C1CD37DE900E9B672 /* CCNNavigationController.m */,
+				FDDAEB8D1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.h */,
+				FDDAEB8E1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m */,
+			);
+			name = CCNNavigationController;
+			path = ../../CCNNavigationController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FDDAEB751CD37DAF00E9B672 /* CCNNavigationController Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDDAEB871CD37DAF00E9B672 /* Build configuration list for PBXNativeTarget "CCNNavigationController Example" */;
+			buildPhases = (
+				FDDAEB721CD37DAF00E9B672 /* Sources */,
+				FDDAEB731CD37DAF00E9B672 /* Frameworks */,
+				FDDAEB741CD37DAF00E9B672 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CCNNavigationController Example";
+			productName = "CCNNavigationController Example";
+			productReference = FDDAEB761CD37DAF00E9B672 /* CCNNavigationController Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FDDAEB6E1CD37DAF00E9B672 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "cocoa:naut";
+				TargetAttributes = {
+					FDDAEB751CD37DAF00E9B672 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = FDDAEB711CD37DAF00E9B672 /* Build configuration list for PBXProject "CCNNavigationController Example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FDDAEB6D1CD37DAF00E9B672;
+			productRefGroup = FDDAEB771CD37DAF00E9B672 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FDDAEB751CD37DAF00E9B672 /* CCNNavigationController Example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FDDAEB741CD37DAF00E9B672 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDDAEB801CD37DAF00E9B672 /* Assets.xcassets in Resources */,
+				FDDAEB831CD37DAF00E9B672 /* MainMenu.xib in Resources */,
+				FDDAEB951CD37E6C00E9B672 /* TestVC.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FDDAEB721CD37DAF00E9B672 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDDAEB7E1CD37DAF00E9B672 /* main.m in Sources */,
+				FDDAEB901CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m in Sources */,
+				FDDAEB8F1CD37DE900E9B672 /* CCNNavigationController.m in Sources */,
+				FDDAEB941CD37E6C00E9B672 /* TestVC.m in Sources */,
+				FDDAEB7B1CD37DAF00E9B672 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FDDAEB811CD37DAF00E9B672 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDDAEB821CD37DAF00E9B672 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FDDAEB851CD37DAF00E9B672 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FDDAEB861CD37DAF00E9B672 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FDDAEB881CD37DAF00E9B672 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "CCNNavigationController Example/PrefixHeader.pch";
+				INFOPLIST_FILE = "CCNNavigationController Example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoanaut.CCNNavigationController-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FDDAEB891CD37DAF00E9B672 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "CCNNavigationController Example/PrefixHeader.pch";
+				INFOPLIST_FILE = "CCNNavigationController Example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoanaut.CCNNavigationController-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FDDAEB711CD37DAF00E9B672 /* Build configuration list for PBXProject "CCNNavigationController Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDDAEB851CD37DAF00E9B672 /* Debug */,
+				FDDAEB861CD37DAF00E9B672 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDDAEB871CD37DAF00E9B672 /* Build configuration list for PBXNativeTarget "CCNNavigationController Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDDAEB881CD37DAF00E9B672 /* Debug */,
+				FDDAEB891CD37DAF00E9B672 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FDDAEB6E1CD37DAF00E9B672 /* Project object */;
+}
