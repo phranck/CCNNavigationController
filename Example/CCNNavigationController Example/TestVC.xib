@@ -72,7 +72,7 @@
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fLM-zB-2Wk">
                     <rect key="frame" x="20" y="61" width="567" height="325"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="G1f-zf-t3p"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="G1f-zf-t3p"/>
                 </imageView>
             </subviews>
             <constraints>
@@ -89,7 +89,7 @@
                 <constraint firstItem="fLM-zB-2Wk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="j69-LV-mUC"/>
                 <constraint firstAttribute="bottom" secondItem="tUi-td-JEa" secondAttribute="bottom" constant="20" id="t75-hK-NVS"/>
             </constraints>
-            <point key="canvasLocation" x="-151.5" y="363"/>
+            <point key="canvasLocation" x="-427.5" y="285"/>
         </customView>
     </objects>
 </document>
