@@ -60,12 +60,12 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     _delegate = nil;
     _viewControllers = [NSMutableArray array];
     
-    NSRect viewControllerFrame = viewController.view.bounds;
-    
     if (!viewController) {
         viewController = [[NSViewController alloc] init];
-        viewController.view = [[NSView alloc] initWithFrame:viewControllerFrame];
+        viewController.view = [[NSView alloc] initWithFrame:NSZeroRect];
     }
+    
+    NSRect viewControllerFrame = viewController.view.bounds;
     
     [_viewControllers addObject:viewController];
     
