@@ -88,7 +88,6 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     viewController.view.translatesAutoresizingMaskIntoConstraints = YES;
     viewController.view.autoresizingMask = self.view.autoresizingMask;
     viewController.view.wantsLayer = YES;
-    viewController.view.frame = viewControllerFrame;
     
     
     // Initial controller will appear on startup
@@ -183,101 +182,143 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 
 #pragma mark - View Controller Transition
 
-- (void)_transitionFromViewController:(__kindof NSViewController *)currentViewController
-                     toViewController:(__kindof NSViewController *)nextViewController
+- (void)_transitionFromViewController:(__kindof NSViewController *)current
+                     toViewController:(__kindof NSViewController *)next
                              animated:(BOOL)animated
                                  push:(BOOL)push {
     
+    __weak typeof(self) wSelf = self;
+    
     // inject navigation controller
-    if ([nextViewController respondsToSelector:@selector(setNavigationController:)]) {
-        [nextViewController performSelector:@selector(setNavigationController:) withObject:self];
+    if ([next respondsToSelector:@selector(setNavigationController:)]) {
+        [next performSelector:@selector(setNavigationController:) withObject:self];
     }
 
     // call the delegate and push a notification
-    [self navigationController:self willShowViewController:nextViewController animated:animated];
+    [self navigationController:self willPopViewController:current animated:animated];
+    [self navigationController:self willShowViewController:next animated:animated];
     
-    if ([nextViewController respondsToSelector:@selector(viewWillAppear:)]) {
-        [(id<CCNViewController>)nextViewController viewWillAppear:animated];
+    
+    if ([next respondsToSelector:@selector(viewWillAppear:)]) {
+        [(id<CCNViewController>)next viewWillAppear:animated];
     }
     
-    if ([currentViewController respondsToSelector:@selector(viewWillDisappear:)]) {
-        [(id<CCNViewController>)currentViewController viewWillDisappear:animated];
+    if ([current respondsToSelector:@selector(viewWillDisappear:)]) {
+        [(id<CCNViewController>)current viewWillDisappear:animated];
     }
     
 
     void(^completeAnimation)(BOOL, BOOL) = ^(BOOL animated, BOOL push) {
-        [currentViewController.view removeFromSuperview];
+        [current.view removeFromSuperview];
         
-        if ([nextViewController respondsToSelector:@selector(viewDidAppear:)]) {
-            [(id<CCNViewController>)nextViewController viewDidAppear:animated];
+        if ([next respondsToSelector:@selector(viewDidAppear:)]) {
+            [(id<CCNViewController>)next viewDidAppear:animated];
         }
+        [wSelf navigationController:wSelf didShowViewController:next animated:animated];
         
-        if ([currentViewController respondsToSelector:@selector(viewDidDisappear:)]) {
-            [(id<CCNViewController>)currentViewController viewDidDisappear:animated];
+        
+        if ([current respondsToSelector:@selector(viewDidDisappear:)]) {
+            [(id<CCNViewController>)current viewDidDisappear:animated];
         }
+        [wSelf navigationController:wSelf didPopViewController:current animated:animated];
+
         
         // remove possible injected navigation controller
-        if ([currentViewController respondsToSelector:@selector(setNavigationController:)]) {
-            [currentViewController performSelector:@selector(setNavigationController:) withObject:nil];
+        if ([current respondsToSelector:@selector(setNavigationController:)]) {
+            [current performSelector:@selector(setNavigationController:) withObject:nil];
         }
+
     };
     
     
-    NSRect nextViewControllerStartFrame = self.view.bounds;
-    NSRect currentViewControllerEndFrame = self.view.bounds;
+    NSRect bounds          = self.view.bounds;
+    NSRect nextStartFrame  = bounds;
+    NSRect nextEndFrame    = bounds;
+    NSRect currentEndFrame = bounds;
     
 
-    [self.view addSubview:nextViewController.view];
-    nextViewController.view.translatesAutoresizingMaskIntoConstraints = YES;
-    nextViewController.view.autoresizingMask = self.view.autoresizingMask;
-    nextViewController.view.wantsLayer = YES;
-    nextViewController.view.layer.backgroundColor = self.configuration.backgroundColor.CGColor;
+    [self.view addSubview:next.view positioned:(push ? NSWindowAbove : NSWindowBelow) relativeTo:current.view];
+    next.view.translatesAutoresizingMaskIntoConstraints = YES;
+    next.view.autoresizingMask = self.view.autoresizingMask;
+    next.view.wantsLayer = YES;
+    next.view.layer.backgroundColor = self.configuration.backgroundColor.CGColor;
     
 
-    // put animation here...
-    if (animated) {
-        switch (self.configuration.transition) {
-            case CCNNavigationControllerTransitionShiftLeft: {
-                nextViewControllerStartFrame.origin.x  = (push ? NSWidth(nextViewControllerStartFrame) : -NSWidth(nextViewControllerStartFrame));
-                currentViewControllerEndFrame.origin.x = (push ? -NSWidth(currentViewControllerEndFrame) : NSWidth(currentViewControllerEndFrame));
-                break;
+    switch (self.configuration.transition) {
+        case CCNNavigationControllerTransitionToLeft: {
+            switch (self.configuration.transitionStyle) {
+                case CCNNavigationControllerTransitionStyleShift: {
+                    currentEndFrame.origin.x = (push ? -NSWidth(bounds) : NSWidth(bounds));
+                    nextStartFrame.origin.x  = (push ? NSWidth(bounds) : -NSWidth(bounds));
+                    break;
+                }
+                case CCNNavigationControllerTransitionStyleStack: {
+                    currentEndFrame.origin.x = (push ? NSMinX(bounds) : NSWidth(bounds));
+                    nextStartFrame.origin.x  = (push ? NSWidth(bounds) : NSMinX(bounds));
+                    break;
+                }
             }
-            case CCNNavigationControllerTransitionShiftRight: {
-                nextViewControllerStartFrame.origin.x  = (push ? -NSWidth(nextViewControllerStartFrame) : NSWidth(nextViewControllerStartFrame));
-                currentViewControllerEndFrame.origin.x = (push ? NSWidth(currentViewControllerEndFrame) : -NSWidth(currentViewControllerEndFrame));
-                break;
-            }
-            case CCNNavigationControllerTransitionShiftDown: {
-                nextViewControllerStartFrame.origin.y  = (push ? NSHeight(nextViewControllerStartFrame) : -NSHeight(nextViewControllerStartFrame));
-                currentViewControllerEndFrame.origin.y = (push ? -NSHeight(currentViewControllerEndFrame) : NSHeight(currentViewControllerEndFrame));
-                break;
-            }
-            case CCNNavigationControllerTransitionShiftUp: {
-                nextViewControllerStartFrame.origin.y  = (push ? -NSHeight(nextViewControllerStartFrame) : NSHeight(nextViewControllerStartFrame));
-                currentViewControllerEndFrame.origin.y = (push ? NSHeight(currentViewControllerEndFrame) : -NSHeight(currentViewControllerEndFrame));
-                break;
-            }
+            break;
         }
-        
-        nextViewController.view.frame = nextViewControllerStartFrame;
-        
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            context.duration = self.configuration.transitionDuration;
-            context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-
-            [[nextViewController.view animator] setFrame:self.view.bounds];
-            [[currentViewController.view animator] setFrame:currentViewControllerEndFrame];
-
-        } completionHandler:^{
-            completeAnimation(animated, push);
-        }];
+        case CCNNavigationControllerTransitionToRight: {
+            switch (self.configuration.transitionStyle) {
+                case CCNNavigationControllerTransitionStyleShift: {
+                    currentEndFrame.origin.x = (push ? NSWidth(bounds) : -NSWidth(bounds));
+                    nextStartFrame.origin.x  = (push ? -NSWidth(bounds) : NSWidth(bounds));
+                    break;
+                }
+                case CCNNavigationControllerTransitionStyleStack: {
+                    currentEndFrame.origin.x = (push ? NSMinX(bounds) : -NSWidth(bounds));
+                    nextStartFrame.origin.x  = (push ? -NSWidth(bounds) : NSMinX(bounds));
+                    break;
+                }
+            }
+            break;
+        }
+        case CCNNavigationControllerTransitionToDown: {
+            switch (self.configuration.transitionStyle) {
+                case CCNNavigationControllerTransitionStyleShift: {
+                    currentEndFrame.origin.y = (push ? -NSHeight(bounds) : NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? NSHeight(bounds) : -NSHeight(bounds));
+                    break;
+                }
+                case CCNNavigationControllerTransitionStyleStack: {
+                    currentEndFrame.origin.y = (push ? NSMinY(bounds) : NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? NSHeight(bounds) : NSMinY(bounds));
+                    break;
+                }
+            }
+            break;
+        }
+        case CCNNavigationControllerTransitionToUp: {
+            switch (self.configuration.transitionStyle) {
+                case CCNNavigationControllerTransitionStyleShift: {
+                    currentEndFrame.origin.y = (push ? NSHeight(bounds) : -NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? -NSHeight(bounds) : NSHeight(bounds));
+                    break;
+                }
+                case CCNNavigationControllerTransitionStyleStack: {
+                    currentEndFrame.origin.y = (push ? NSMinY(bounds) : -NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? -NSHeight(bounds) : NSMinY(bounds));
+                    break;
+                }
+            }
+            break;
+        }
     }
     
-    else {
-        nextViewController.view.frame = nextViewControllerStartFrame;
-        [currentViewController.view removeFromSuperview];
+    next.view.frame = nextStartFrame;
+    
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        context.duration = (animated ? self.configuration.transitionDuration : 0);
+        context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        [[current.view animator] setFrame:currentEndFrame];
+        [[next.view animator] setFrame:nextEndFrame];
+        
+    } completionHandler:^{
         completeAnimation(animated, push);
-    }
+    }];
 }
 
 #pragma mark - Custom Accessors

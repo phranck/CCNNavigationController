@@ -29,19 +29,85 @@
 
 #import <AppKit/AppKit.h>
 
+
+/**
+ *  Constant indicating the transition behaviour of push operations.
+ */
 typedef NS_ENUM(NSUInteger, CCNNavigationControllerTransition) {
-    CCNNavigationControllerTransitionShiftLeft = 0,             // push from right to left
-    CCNNavigationControllerTransitionShiftRight,                // push from left to right
-    CCNNavigationControllerTransitionShiftDown,                 // push from top to bottom
-    CCNNavigationControllerTransitionShiftUp                    // push from bottom to top
+    /**
+     *  Designates that a pushed view controller's view will be shifted from right to left.
+     */
+    CCNNavigationControllerTransitionToLeft = 0,
+    /**
+     *  Designates that a pushed view controller's view will be shifted from left to right.
+     */
+    CCNNavigationControllerTransitionToRight,
+    /**
+     *  Designates that a pushed view controller's view will be shifted from top to the bottom.
+     */
+    CCNNavigationControllerTransitionToDown,
+    /**
+     *  Designates that a pushed view controller's view will be shifted from the bottom upwards.
+     */
+    CCNNavigationControllerTransitionToUp
 };
+
+
+/**
+ *  Constants indicating the transition style of push operations.
+ */
+typedef NS_ENUM(NSUInteger, CCNNavigationControllerTransitionStyle) {
+    /**
+     *  Designates that a popped view controller's view will be shifted out during a push operation while the new view is about beeing shown.
+     */
+    CCNNavigationControllerTransitionStyleShift = 0,
+    /**
+     *  Designates that the pushed view will overlap the current visible view controller's view.
+     */
+    CCNNavigationControllerTransitionStyleStack
+};
+
 
 @interface CCNNavigationControllerConfiguration : NSObject
 
+/**
+ *  Creates and returns a `CCNNavigationControllerConfiguration` object with default values.
+ *
+ *  @return The newly created configuration container.
+ */
 + (instancetype)defaultConfiguration;
 
-@property (nonatomic, strong) NSColor *backgroundColor;                                     // default: [NSColor windowBackgroundColor], this color will be injected to every pushed viewController
-@property (nonatomic, assign) CCNNavigationControllerTransition transition;                 // default: CCNNavigationControllerTransitionShiftLeft
-@property (assign, nonatomic) NSTimeInterval transitionDuration;                            // default: 0.35
+/**
+ *  The background color of the navigation controller.
+ *
+ *  This color will be injected to every pushed viewController. The default is: `[NSColor windowBackgroundColor]`.
+ */
+@property (nonatomic, strong) NSColor *backgroundColor;
+
+/**
+ *  Property that controls the transition of push and pop of view controllers.
+ *
+ *  The default value is `CCNNavigationControllerTransitionToLeft`.
+ *
+ *  @see CCNNavigationControllerTransition
+ */
+@property (nonatomic, assign) CCNNavigationControllerTransition transition;
+
+
+/**
+ *  Property that controls the transition style of push and pop of view controllers.
+ *
+ *  The default value is `CCNNavigationControllerTransitionStyleShift`.
+ *
+ *  @see CCNNavigationControllerTransitionStyle
+ */
+@property (nonatomic, assign) CCNNavigationControllerTransitionStyle transitionStyle;
+
+/**
+ *  Property that controls the duration of any transition orpartion.
+ *
+ *  The default value is `0.35` seconds.
+ */
+@property (assign, nonatomic) NSTimeInterval transitionDuration;
 
 @end

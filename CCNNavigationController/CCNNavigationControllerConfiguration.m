@@ -39,9 +39,10 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.backgroundColor    = [NSColor windowBackgroundColor];
-        self.transitionDuration = 0.35;
-        self.transition         = CCNNavigationControllerTransitionShiftLeft;
+        _backgroundColor    = [NSColor windowBackgroundColor];
+        _transition         = CCNNavigationControllerTransitionToLeft;
+        _transitionStyle    = CCNNavigationControllerTransitionStyleShift;
+        _transitionDuration = 0.35;
     }
     return self;
 }
