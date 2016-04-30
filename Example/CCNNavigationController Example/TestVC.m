@@ -48,7 +48,7 @@ static NSImage *_image;
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
     self.view.wantsLayer = YES;
     
-    _image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://ssl.webpack.de/lorempixel.com/640/480/"]];
+    _image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://lorempixel.com/640/480/"]];
     self.imageView.image = _image;
 }
 
