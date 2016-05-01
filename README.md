@@ -62,6 +62,10 @@ There are two ways to give the navigation controller its rootViewController:
 ![CCNNavigationController-Example](img/CCNNavigationController-Example.png)
 
 
+## Documentation
+
+You'll find a complete documentation on [CocoaDocs](http://cocoadocs.org/docsets/CCNNavigationController/).
+
 ## Contribution
 
 The code is provided as-is, and it is far off being complete or free of bugs. If you like this component feel free to support it. Make changes related to your needs, extend it or just use it in your own project. Pull-Requests and Feedbacks are very welcome. Just contact me at [phranck@cocoanaut.com](mailto:phranck@cocoanaut.com?Subject=[Xcode-Coordinator-Template] Your component on Github) or send me a ping on Twitter [@TheCocoaNaut](http://twitter.com/TheCocoaNaut). 
