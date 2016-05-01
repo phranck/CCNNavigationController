@@ -29,7 +29,8 @@ There are two ways to give the navigation controller its rootViewController:
    CCNNavigationController *navigationController = [[CCNNavigationController alloc] initWithRootViewController:rootVC];
     
    // you can set some configuration options
-   navigationController.configuration.transition = CCNNavigationControllerTransitionShiftDown;
+   navigationController.configuration.transition = CCNNavigationControllerTransitionToDown;
+   navigationController.configuration.transitionStyle = CCNNavigationControllerTransitionStyleStack;
    
    // make the navigation controller the window's content view controller
    self.window.contentViewController = navigationController;
