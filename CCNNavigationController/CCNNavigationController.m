@@ -276,26 +276,6 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     next.view.frame = nextStartFrame;
 
     __weak typeof(self) wSelf = self;
-    void (^completeAnimation)(BOOL, BOOL) = ^(BOOL animated, BOOL push) {
-        [current.view removeFromSuperview];
-
-        if ([next respondsToSelector:@selector(viewDidAppear:)]) {
-            [(id<CCNViewController>)next viewDidAppear:animated];
-        }
-        [wSelf navigationController:wSelf didShowViewController:next animated:animated];
-
-        if ([current respondsToSelector:@selector(viewDidDisappear:)]) {
-            [(id<CCNViewController>)current viewDidDisappear:animated];
-        }
-        [wSelf navigationController:wSelf didPopViewController:current animated:animated];
-
-        // remove possible injected navigation controller
-        if ([current respondsToSelector:@selector(setNavigationController:)]) {
-            [current performSelector:@selector(setNavigationController:) withObject:nil];
-        }
-
-    };
-
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
         context.duration = (animated ? self.configuration.transitionDuration : 0);
         context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -305,7 +285,22 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 
     }
         completionHandler:^{
-            completeAnimation(animated, push);
+            if ([next respondsToSelector:@selector(viewDidAppear:)]) {
+                [(id<CCNViewController>)next viewDidAppear:animated];
+            }
+            [wSelf navigationController:wSelf didShowViewController:next animated:animated];
+
+            [current.view removeFromSuperview];
+
+            // remove possible injected navigation controller
+            if ([current respondsToSelector:@selector(setNavigationController:)]) {
+                [current performSelector:@selector(setNavigationController:) withObject:nil];
+            }
+
+            if ([current respondsToSelector:@selector(viewDidDisappear:)]) {
+                [(id<CCNViewController>)current viewDidDisappear:animated];
+            }
+            [wSelf navigationController:wSelf didPopViewController:current animated:animated];
         }];
 }
 
