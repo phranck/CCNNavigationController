@@ -28,6 +28,7 @@
  */
 
 #import <AppKit/AppKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 /**
  *  Constant indicating the transition behaviour of push operations.
@@ -105,5 +106,10 @@ typedef NS_ENUM(NSUInteger, CCNNavigationControllerTransitionStyle) {
  *  The default value is `0.35` seconds.
  */
 @property (assign, nonatomic) NSTimeInterval transitionDuration;
+
+/**
+ *  Property that controls the timing function that has to be used during transition.
+ */
+@property (nonatomic, copy) CAMediaTimingFunction *mediaTimingFunction;
 
 @end

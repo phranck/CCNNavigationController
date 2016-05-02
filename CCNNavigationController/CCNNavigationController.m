@@ -29,7 +29,6 @@
  THE SOFTWARE.
  */
 
-#import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
 
 #import "CCNNavigationController.h"
@@ -81,9 +80,9 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     }
 
     [self.view addSubview:viewController.view];
-    viewController.view.translatesAutoresizingMaskIntoConstraints = YES;
+    viewController.view.translatesAutoresizingMaskIntoConstraints = self.view.translatesAutoresizingMaskIntoConstraints;
     viewController.view.autoresizingMask = self.view.autoresizingMask;
-    viewController.view.wantsLayer = YES;
+    viewController.view.wantsLayer = self.view.wantsLayer;
 
     // Initial controller will appear on startup
     if ([viewController respondsToSelector:@selector(viewWillAppear:)]) {
@@ -211,74 +210,74 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     CCNNavigationControllerTransitionStyle transitionStyle = self.configuration.transitionStyle;
 
     switch (transition) {
-    case CCNNavigationControllerTransitionToLeft: {
-        switch (transitionStyle) {
-        case CCNNavigationControllerTransitionStyleShift: {
-            currentEndFrame.origin.x = (push ? -NSWidth(bounds) : NSWidth(bounds));
-            nextStartFrame.origin.x = (push ? NSWidth(bounds) : -NSWidth(bounds));
+        case CCNNavigationControllerTransitionToLeft: {
+            switch (transitionStyle) {
+                case CCNNavigationControllerTransitionStyleShift: {
+                    currentEndFrame.origin.x = (push ? -NSWidth(bounds) : NSWidth(bounds));
+                    nextStartFrame.origin.x  = (push ? NSWidth(bounds) : -NSWidth(bounds));
+                    break;
+                }
+                case CCNNavigationControllerTransitionStyleStack: {
+                    currentEndFrame.origin.x = (push ? NSMinX(bounds) : NSWidth(bounds));
+                    nextStartFrame.origin.x  = (push ? NSWidth(bounds) : NSMinX(bounds));
+                    break;
+                }
+            }
             break;
         }
-        case CCNNavigationControllerTransitionStyleStack: {
-            currentEndFrame.origin.x = (push ? NSMinX(bounds) : NSWidth(bounds));
-            nextStartFrame.origin.x = (push ? NSWidth(bounds) : NSMinX(bounds));
+        case CCNNavigationControllerTransitionToRight: {
+            switch (transitionStyle) {
+                case CCNNavigationControllerTransitionStyleShift: {
+                    currentEndFrame.origin.x = (push ? NSWidth(bounds) : -NSWidth(bounds));
+                    nextStartFrame.origin.x  = (push ? -NSWidth(bounds) : NSWidth(bounds));
+                    break;
+                }
+                case CCNNavigationControllerTransitionStyleStack: {
+                    currentEndFrame.origin.x = (push ? NSMinX(bounds) : -NSWidth(bounds));
+                    nextStartFrame.origin.x  = (push ? -NSWidth(bounds) : NSMinX(bounds));
+                    break;
+                }
+            }
             break;
         }
-        }
-        break;
-    }
-    case CCNNavigationControllerTransitionToRight: {
-        switch (transitionStyle) {
-        case CCNNavigationControllerTransitionStyleShift: {
-            currentEndFrame.origin.x = (push ? NSWidth(bounds) : -NSWidth(bounds));
-            nextStartFrame.origin.x = (push ? -NSWidth(bounds) : NSWidth(bounds));
+        case CCNNavigationControllerTransitionToDown: {
+            switch (transitionStyle) {
+                case CCNNavigationControllerTransitionStyleShift: {
+                    currentEndFrame.origin.y = (push ? -NSHeight(bounds) : NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? NSHeight(bounds) : -NSHeight(bounds));
+                    break;
+                }
+                case CCNNavigationControllerTransitionStyleStack: {
+                    currentEndFrame.origin.y = (push ? NSMinY(bounds) : NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? NSHeight(bounds) : NSMinY(bounds));
+                    break;
+                }
+            }
             break;
         }
-        case CCNNavigationControllerTransitionStyleStack: {
-            currentEndFrame.origin.x = (push ? NSMinX(bounds) : -NSWidth(bounds));
-            nextStartFrame.origin.x = (push ? -NSWidth(bounds) : NSMinX(bounds));
+        case CCNNavigationControllerTransitionToUp: {
+            switch (transitionStyle) {
+                case CCNNavigationControllerTransitionStyleShift: {
+                    currentEndFrame.origin.y = (push ? NSHeight(bounds) : -NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? -NSHeight(bounds) : NSHeight(bounds));
+                    break;
+                }
+                case CCNNavigationControllerTransitionStyleStack: {
+                    currentEndFrame.origin.y = (push ? NSMinY(bounds) : -NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? -NSHeight(bounds) : NSMinY(bounds));
+                    break;
+                }
+            }
             break;
         }
-        }
-        break;
-    }
-    case CCNNavigationControllerTransitionToDown: {
-        switch (transitionStyle) {
-        case CCNNavigationControllerTransitionStyleShift: {
-            currentEndFrame.origin.y = (push ? -NSHeight(bounds) : NSHeight(bounds));
-            nextStartFrame.origin.y = (push ? NSHeight(bounds) : -NSHeight(bounds));
-            break;
-        }
-        case CCNNavigationControllerTransitionStyleStack: {
-            currentEndFrame.origin.y = (push ? NSMinY(bounds) : NSHeight(bounds));
-            nextStartFrame.origin.y = (push ? NSHeight(bounds) : NSMinY(bounds));
-            break;
-        }
-        }
-        break;
-    }
-    case CCNNavigationControllerTransitionToUp: {
-        switch (transitionStyle) {
-        case CCNNavigationControllerTransitionStyleShift: {
-            currentEndFrame.origin.y = (push ? NSHeight(bounds) : -NSHeight(bounds));
-            nextStartFrame.origin.y = (push ? -NSHeight(bounds) : NSHeight(bounds));
-            break;
-        }
-        case CCNNavigationControllerTransitionStyleStack: {
-            currentEndFrame.origin.y = (push ? NSMinY(bounds) : -NSHeight(bounds));
-            nextStartFrame.origin.y = (push ? -NSHeight(bounds) : NSMinY(bounds));
-            break;
-        }
-        }
-        break;
-    }
     }
 
     next.view.frame = nextStartFrame;
 
     __weak typeof(self) wSelf = self;
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-        context.duration = (animated ? self.configuration.transitionDuration : 0);
-        context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        context.duration       = (animated ? self.configuration.transitionDuration : 0);
+        context.timingFunction = self.configuration.mediaTimingFunction;
 
         [[current.view animator] setFrame:currentEndFrame];
         [[next.view animator] setFrame:nextEndFrame];
@@ -288,7 +287,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
             if ([next respondsToSelector:@selector(viewDidAppear:)]) {
                 [(id<CCNViewController>)next viewDidAppear:animated];
             }
-            [wSelf navigationController:wSelf didShowViewController:next animated:animated];
+            [self navigationController:wSelf didShowViewController:next animated:animated];
 
             [current.view removeFromSuperview];
 
@@ -300,7 +299,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
             if ([current respondsToSelector:@selector(viewDidDisappear:)]) {
                 [(id<CCNViewController>)current viewDidDisappear:animated];
             }
-            [wSelf navigationController:wSelf didPopViewController:current animated:animated];
+            [self navigationController:wSelf didPopViewController:current animated:animated];
         }];
 }
 
