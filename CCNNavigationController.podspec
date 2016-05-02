@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name                  = 'CCNNavigationController'
-	s.version               = '1.1.0'
+	s.version               = '1.1.1'
 	s.summary               = 'An Mac OS X Navigation Controller that acts mostly like the counter part on iOS - UINavigationController.'
 	s.homepage              = 'https://github.com/phranck/CCNNavigationController'
 	s.authors               = { 'Frank Gregor' => 'phranck@cocoanaut.com'}
