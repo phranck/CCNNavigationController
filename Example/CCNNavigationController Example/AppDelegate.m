@@ -25,7 +25,8 @@
     CCNNavigationController *navigationController = [[CCNNavigationController alloc] initWithRootViewController:rootVC];
     navigationController.delegate = self;
     navigationController.configuration.transitionStyle = CCNNavigationControllerTransitionStyleStack;
-//    navigationController.configuration.transition = CCNNavigationControllerTransitionToUp;
+    navigationController.configuration.transition = CCNNavigationControllerTransitionToLeft;
+//    navigationController.configuration.transitionDuration = 2.5;
     self.window.contentViewController = navigationController;
     
     

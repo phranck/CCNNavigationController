@@ -216,6 +216,14 @@
 
 @end
 
+
+#pragma mark - NSView+CCNAppKit
+@interface NSView (CCNNavigationController)
+- (BOOL)hasSubView:(NSView *)theSubView;
+- (void)bringSubViewToFront:(NSView *)theSubView;
+@end
+
+
 #pragma mark - NSViewController+CCNNavigationController
 @interface NSViewController (CCNNavigationController)
 @property (nonatomic, weak) CCNNavigationController *navigationController;

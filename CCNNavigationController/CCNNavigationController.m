@@ -196,16 +196,16 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     }
 
     NSRect bounds = self.view.bounds;
-    NSRect nextStartFrame = bounds;
-    NSRect nextEndFrame = bounds;
+    NSRect nextStartFrame  = bounds;
+    NSRect nextEndFrame    = bounds;
     NSRect currentEndFrame = bounds;
-
-    [self.view addSubview:next.view positioned:(push ? NSWindowAbove : NSWindowBelow) relativeTo:current.view];
+    
+    [self.view addSubview:next.view];
     next.view.translatesAutoresizingMaskIntoConstraints = YES;
     next.view.autoresizingMask = self.view.autoresizingMask;
     next.view.wantsLayer = YES;
     next.view.layer.backgroundColor = self.configuration.backgroundColor.CGColor;
-
+    
     CCNNavigationControllerTransition transition = self.configuration.transition;
     CCNNavigationControllerTransitionStyle transitionStyle = self.configuration.transitionStyle;
 
@@ -220,6 +220,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                 case CCNNavigationControllerTransitionStyleStack: {
                     currentEndFrame.origin.x = (push ? NSMinX(bounds) : NSWidth(bounds));
                     nextStartFrame.origin.x  = (push ? NSWidth(bounds) : NSMinX(bounds));
+                    [self.view bringSubViewToFront:(push ? next.view : current.view)];
                     break;
                 }
             }
@@ -235,6 +236,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                 case CCNNavigationControllerTransitionStyleStack: {
                     currentEndFrame.origin.x = (push ? NSMinX(bounds) : -NSWidth(bounds));
                     nextStartFrame.origin.x  = (push ? -NSWidth(bounds) : NSMinX(bounds));
+                    [self.view bringSubViewToFront:(push ? next.view : current.view)];
                     break;
                 }
             }
@@ -248,8 +250,9 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                     break;
                 }
                 case CCNNavigationControllerTransitionStyleStack: {
-                    currentEndFrame.origin.y = (push ? NSMinY(bounds) : NSHeight(bounds));
-                    nextStartFrame.origin.y  = (push ? NSHeight(bounds) : NSMinY(bounds));
+                    currentEndFrame.origin.y = (push ? -NSHeight(bounds) : NSMinY(bounds));
+                    nextStartFrame.origin.y  = (push ? NSMinY(bounds) : -NSHeight(bounds));
+                    [self.view bringSubViewToFront:(push ? current.view : next.view)];
                     break;
                 }
             }
@@ -263,8 +266,9 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                     break;
                 }
                 case CCNNavigationControllerTransitionStyleStack: {
-                    currentEndFrame.origin.y = (push ? NSMinY(bounds) : -NSHeight(bounds));
-                    nextStartFrame.origin.y  = (push ? -NSHeight(bounds) : NSMinY(bounds));
+                    currentEndFrame.origin.y = (push ? NSHeight(bounds) : NSMinY(bounds));
+                    nextStartFrame.origin.y  = (push ? NSMinY(bounds) : NSHeight(bounds));
+                    [self.view bringSubViewToFront:(push ? current.view : next.view)];
                     break;
                 }
             }
@@ -352,6 +356,29 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 }
 
 @end
+
+
+#pragma mark - NSView+CCNNavigationController
+@implementation NSView (CCNNavigationController)
+- (BOOL)hasSubView:(NSView *)theSubView {
+    __block BOOL hasSubView = NO;
+    [self.subviews enumerateObjectsUsingBlock:^(NSView *enumView, NSUInteger idx, BOOL *stop) {
+        if ([enumView isEqual:theSubView]) {
+            hasSubView = YES;
+            *stop = YES;
+        }
+    }];
+    return hasSubView;
+}
+
+- (void)bringSubViewToFront:(NSView *)theSubView {
+    if ([self hasSubView:theSubView]) {
+        [theSubView removeFromSuperviewWithoutNeedingDisplay];
+        [self addSubview:theSubView positioned:NSWindowAbove relativeTo:nil];
+    }
+}
+@end
+
 
 #pragma mark - NSViewController+CCNNavigationController
 @implementation NSViewController (CCNNavigationController)
