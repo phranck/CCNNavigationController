@@ -250,9 +250,9 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                     break;
                 }
                 case CCNNavigationControllerTransitionStyleStack: {
-                    currentEndFrame.origin.y = (push ? -NSHeight(bounds) : NSMinY(bounds));
-                    nextStartFrame.origin.y  = (push ? NSMinY(bounds) : -NSHeight(bounds));
-                    [self.view bringSubViewToFront:(push ? current.view : next.view)];
+                    currentEndFrame.origin.y = (push ? NSMinY(bounds) : NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? NSHeight(bounds) : NSMinY(bounds));
+                    [self.view bringSubViewToFront:(push ? next.view : current.view)];
                     break;
                 }
             }
@@ -266,9 +266,9 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                     break;
                 }
                 case CCNNavigationControllerTransitionStyleStack: {
-                    currentEndFrame.origin.y = (push ? NSHeight(bounds) : NSMinY(bounds));
-                    nextStartFrame.origin.y  = (push ? NSMinY(bounds) : NSHeight(bounds));
-                    [self.view bringSubViewToFront:(push ? current.view : next.view)];
+                    currentEndFrame.origin.y = (push ? NSMinY(bounds) : -NSHeight(bounds));
+                    nextStartFrame.origin.y  = (push ? -NSHeight(bounds) : NSMinY(bounds));
+                    [self.view bringSubViewToFront:(push ? next.view : current.view)];
                     break;
                 }
             }
@@ -280,7 +280,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 
     __weak typeof(self) wSelf = self;
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-        context.duration       = (animated ? self.configuration.transitionDuration : 0);
+        context.duration = (animated ? self.configuration.transitionDuration : 0);
         context.timingFunction = self.configuration.mediaTimingFunction;
 
         [[current.view animator] setFrame:currentEndFrame];
