@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FDD580491CDAD2D900531D71 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD580471CDAD2D900531D71 /* ContainerViewController.m */; };
+		FDD5804A1CDAD2D900531D71 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDD580481CDAD2D900531D71 /* ContainerViewController.xib */; };
 		FDDAEB7B1CD37DAF00E9B672 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB7A1CD37DAF00E9B672 /* AppDelegate.m */; };
 		FDDAEB7E1CD37DAF00E9B672 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB7D1CD37DAF00E9B672 /* main.m */; };
 		FDDAEB801CD37DAF00E9B672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB7F1CD37DAF00E9B672 /* Assets.xcassets */; };
 		FDDAEB831CD37DAF00E9B672 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB811CD37DAF00E9B672 /* MainMenu.xib */; };
 		FDDAEB8F1CD37DE900E9B672 /* CCNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB8C1CD37DE900E9B672 /* CCNNavigationController.m */; };
 		FDDAEB901CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB8E1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m */; };
-		FDDAEB941CD37E6C00E9B672 /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB921CD37E6C00E9B672 /* TestVC.m */; };
-		FDDAEB951CD37E6C00E9B672 /* TestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB931CD37E6C00E9B672 /* TestVC.xib */; };
+		FDDAEB941CD37E6C00E9B672 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB921CD37E6C00E9B672 /* ImageViewController.m */; };
+		FDDAEB951CD37E6C00E9B672 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB931CD37E6C00E9B672 /* ImageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FDD580461CDAD2D900531D71 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		FDD580471CDAD2D900531D71 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		FDD580481CDAD2D900531D71 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
 		FDDAEB761CD37DAF00E9B672 /* CCNNavigationController Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CCNNavigationController Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDAEB791CD37DAF00E9B672 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FDDAEB7A1CD37DAF00E9B672 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -29,9 +34,9 @@
 		FDDAEB8C1CD37DE900E9B672 /* CCNNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNNavigationController.m; sourceTree = "<group>"; };
 		FDDAEB8D1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNNavigationControllerConfiguration.h; sourceTree = "<group>"; };
 		FDDAEB8E1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNNavigationControllerConfiguration.m; sourceTree = "<group>"; };
-		FDDAEB911CD37E6C00E9B672 /* TestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
-		FDDAEB921CD37E6C00E9B672 /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
-		FDDAEB931CD37E6C00E9B672 /* TestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestVC.xib; sourceTree = "<group>"; };
+		FDDAEB911CD37E6C00E9B672 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		FDDAEB921CD37E6C00E9B672 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		FDDAEB931CD37E6C00E9B672 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		FDDAEB961CD37EE800E9B672 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,6 +51,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD2308551CDBA3050008115F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FDDAEB911CD37E6C00E9B672 /* ImageViewController.h */,
+				FDDAEB921CD37E6C00E9B672 /* ImageViewController.m */,
+				FDDAEB931CD37E6C00E9B672 /* ImageViewController.xib */,
+				FDD580461CDAD2D900531D71 /* ContainerViewController.h */,
+				FDD580471CDAD2D900531D71 /* ContainerViewController.m */,
+				FDD580481CDAD2D900531D71 /* ContainerViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		FDDAEB6D1CD37DAF00E9B672 = {
 			isa = PBXGroup;
 			children = (
@@ -67,13 +85,8 @@
 			children = (
 				FDDAEB791CD37DAF00E9B672 /* AppDelegate.h */,
 				FDDAEB7A1CD37DAF00E9B672 /* AppDelegate.m */,
-				FDDAEB911CD37E6C00E9B672 /* TestVC.h */,
-				FDDAEB921CD37E6C00E9B672 /* TestVC.m */,
-				FDDAEB931CD37E6C00E9B672 /* TestVC.xib */,
-				FDDAEB7F1CD37DAF00E9B672 /* Assets.xcassets */,
 				FDDAEB811CD37DAF00E9B672 /* MainMenu.xib */,
-				FDDAEB841CD37DAF00E9B672 /* Info.plist */,
-				FDDAEB961CD37EE800E9B672 /* PrefixHeader.pch */,
+				FD2308551CDBA3050008115F /* View Controllers */,
 				FDDAEB8A1CD37DE900E9B672 /* CCNNavigationController */,
 				FDDAEB7C1CD37DAF00E9B672 /* Supporting Files */,
 			);
@@ -83,6 +96,9 @@
 		FDDAEB7C1CD37DAF00E9B672 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FDDAEB7F1CD37DAF00E9B672 /* Assets.xcassets */,
+				FDDAEB841CD37DAF00E9B672 /* Info.plist */,
+				FDDAEB961CD37EE800E9B672 /* PrefixHeader.pch */,
 				FDDAEB7D1CD37DAF00E9B672 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -159,7 +175,8 @@
 			files = (
 				FDDAEB801CD37DAF00E9B672 /* Assets.xcassets in Resources */,
 				FDDAEB831CD37DAF00E9B672 /* MainMenu.xib in Resources */,
-				FDDAEB951CD37E6C00E9B672 /* TestVC.xib in Resources */,
+				FDD5804A1CDAD2D900531D71 /* ContainerViewController.xib in Resources */,
+				FDDAEB951CD37E6C00E9B672 /* ImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +189,9 @@
 			files = (
 				FDDAEB7E1CD37DAF00E9B672 /* main.m in Sources */,
 				FDDAEB901CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m in Sources */,
+				FDD580491CDAD2D900531D71 /* ContainerViewController.m in Sources */,
 				FDDAEB8F1CD37DE900E9B672 /* CCNNavigationController.m in Sources */,
-				FDDAEB941CD37E6C00E9B672 /* TestVC.m in Sources */,
+				FDDAEB941CD37E6C00E9B672 /* ImageViewController.m in Sources */,
 				FDDAEB7B1CD37DAF00E9B672 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

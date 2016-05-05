@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F31a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ImageViewController">
+            <connections>
+                <outlet property="imageView" destination="fLM-zB-2Wk" id="0hc-Cx-fGT"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="607" height="406"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fLM-zB-2Wk">
+                    <rect key="frame" x="0.0" y="0.0" width="607" height="406"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="G1f-zf-t3p"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fLM-zB-2Wk" secondAttribute="trailing" id="HuR-aF-DHd"/>
+                <constraint firstItem="fLM-zB-2Wk" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Qcy-ug-Mhi"/>
+                <constraint firstItem="fLM-zB-2Wk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="tV4-xL-1yZ"/>
+                <constraint firstAttribute="bottom" secondItem="fLM-zB-2Wk" secondAttribute="bottom" id="xZx-bS-lLd"/>
+            </constraints>
+            <point key="canvasLocation" x="-427.5" y="285"/>
+        </customView>
+    </objects>
+</document>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F31a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ContainerViewController">
+            <connections>
+                <outlet property="imageContainer" destination="QHa-hA-Csc" id="ehP-gr-a3M"/>
+                <outlet property="nextButton" destination="NkH-ep-aSV" id="NuK-0V-jma"/>
+                <outlet property="popToFiveButton" destination="Sbo-O3-XYm" id="P0i-n8-9Pf"/>
+                <outlet property="popToRootButton" destination="2OD-T1-fNb" id="5on-aP-QJe"/>
+                <outlet property="previousButton" destination="V9o-JG-DJz" id="rQs-cv-jGX"/>
+                <outlet property="transitionPopup" destination="3tu-0B-Ths" id="pbd-KQ-jmS"/>
+                <outlet property="transitionStylePopup" destination="f2R-Vp-TuR" id="LDi-v6-UC4"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="640" height="566"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="QHa-hA-Csc">
+                    <rect key="frame" x="0.0" y="86" width="640" height="480"/>
+                </customView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V9o-JG-DJz">
+                    <rect key="frame" x="15" y="28" width="68" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="58" id="5bJ-fL-9fp"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="←" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SO2-PJ-YUv">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="11" name="LucidaGrande"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="previousButtonAction:" target="-2" id="SRl-zC-sAx"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2OD-T1-fNb">
+                    <rect key="frame" x="81" y="42" width="138" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="128" id="daM-N7-QMV"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Pop to RootVC" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vqV-Af-8dk">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="popTooRootButtonAction:" target="-2" id="CoF-uN-Mdv"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NkH-ep-aSV">
+                    <rect key="frame" x="558" y="28" width="67" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="57" id="Ztp-JS-sKf"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="→" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lb3-xB-8x2">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="11" name="LucidaGrande"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="nextButtonAction:" target="-2" id="BEP-Ok-o9O"/>
+                    </connections>
+                </button>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f2R-Vp-TuR">
+                    <rect key="frame" x="342" y="45" width="216" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="210" id="TN2-nz-wnB"/>
+                    </constraints>
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HKr-0s-SCS" id="Qle-Gt-QPu">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" id="IER-AM-IyL">
+                            <items>
+                                <menuItem title="Item 1" state="on" id="HKr-0s-SCS"/>
+                                <menuItem title="Item 2" id="Uaa-Ac-rZq"/>
+                                <menuItem title="Item 3" id="hoS-C1-fk8"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="transitionStylePopupAction:" target="-2" id="zzE-TK-Iiq"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q8a-JV-cyg">
+                    <rect key="frame" x="253" y="50" width="86" height="14"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Transition Style" id="4GM-Ff-H0A">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3tu-0B-Ths">
+                    <rect key="frame" x="342" y="17" width="216" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="210" id="QRw-W8-MQX"/>
+                    </constraints>
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="3dh-QR-aKJ" id="YhY-sC-Hwc">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" id="a96-XL-Bwm">
+                            <items>
+                                <menuItem title="Item 1" state="on" id="3dh-QR-aKJ"/>
+                                <menuItem title="Item 2" id="DEE-Oy-pTN"/>
+                                <menuItem title="Item 3" id="2wJ-gs-ZOJ"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="transitionPopupAction:" target="-2" id="smh-XD-waM"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zbq-mP-pUj">
+                    <rect key="frame" x="283" y="22" width="56" height="14"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Transition" id="VC7-pq-PFh">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sbo-O3-XYm">
+                    <rect key="frame" x="81" y="14" width="138" height="28"/>
+                    <buttonCell key="cell" type="push" title="Pop to Image #1" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0AD-S1-iIn">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="popToFiveButtonAction:" target="-2" id="DkE-kk-0L1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="f2R-Vp-TuR" firstAttribute="leading" secondItem="Q8a-JV-cyg" secondAttribute="trailing" constant="8" id="IEi-hN-xpq"/>
+                <constraint firstItem="zbq-mP-pUj" firstAttribute="top" secondItem="Q8a-JV-cyg" secondAttribute="bottom" constant="14" id="J72-So-9Go"/>
+                <constraint firstItem="2OD-T1-fNb" firstAttribute="leading" secondItem="V9o-JG-DJz" secondAttribute="trailing" constant="8" id="JXi-XB-obi"/>
+                <constraint firstItem="2OD-T1-fNb" firstAttribute="top" secondItem="QHa-hA-Csc" secondAttribute="bottom" constant="20" id="Kbf-WS-lhI"/>
+                <constraint firstItem="3tu-0B-Ths" firstAttribute="leading" secondItem="zbq-mP-pUj" secondAttribute="trailing" constant="8" id="N19-aw-870"/>
+                <constraint firstAttribute="trailing" secondItem="NkH-ep-aSV" secondAttribute="trailing" constant="20" id="TbH-I7-mnu"/>
+                <constraint firstAttribute="bottom" secondItem="V9o-JG-DJz" secondAttribute="bottom" constant="34" id="TcV-d2-6tV"/>
+                <constraint firstAttribute="bottom" secondItem="Sbo-O3-XYm" secondAttribute="bottom" constant="20" id="WeT-hh-827"/>
+                <constraint firstItem="3tu-0B-Ths" firstAttribute="top" secondItem="f2R-Vp-TuR" secondAttribute="bottom" constant="10" id="bt6-dA-RlN"/>
+                <constraint firstItem="NkH-ep-aSV" firstAttribute="leading" secondItem="3tu-0B-Ths" secondAttribute="trailing" constant="8" id="dCY-S1-TFS"/>
+                <constraint firstItem="NkH-ep-aSV" firstAttribute="leading" secondItem="f2R-Vp-TuR" secondAttribute="trailing" constant="8" id="f0I-AS-MhR"/>
+                <constraint firstItem="Sbo-O3-XYm" firstAttribute="width" secondItem="2OD-T1-fNb" secondAttribute="width" id="hGK-if-q6Q"/>
+                <constraint firstItem="Sbo-O3-XYm" firstAttribute="leading" secondItem="2OD-T1-fNb" secondAttribute="leading" id="hJc-7w-gSs"/>
+                <constraint firstItem="QHa-hA-Csc" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="hnT-6e-EUc"/>
+                <constraint firstAttribute="bottom" secondItem="NkH-ep-aSV" secondAttribute="bottom" constant="34" id="oqE-Gz-tzs"/>
+                <constraint firstItem="Q8a-JV-cyg" firstAttribute="top" secondItem="QHa-hA-Csc" secondAttribute="bottom" constant="22" id="paK-P5-tSV"/>
+                <constraint firstItem="QHa-hA-Csc" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="sFR-N0-RL3"/>
+                <constraint firstItem="f2R-Vp-TuR" firstAttribute="top" secondItem="QHa-hA-Csc" secondAttribute="bottom" constant="20" id="suc-VT-57R"/>
+                <constraint firstItem="V9o-JG-DJz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="y6T-Ie-bZn"/>
+                <constraint firstAttribute="trailing" secondItem="QHa-hA-Csc" secondAttribute="trailing" id="z0X-za-fF7"/>
+                <constraint firstItem="Sbo-O3-XYm" firstAttribute="top" secondItem="2OD-T1-fNb" secondAttribute="bottom" constant="10" id="ztV-Nu-ahG"/>
+            </constraints>
+            <point key="canvasLocation" x="232" y="319"/>
+        </customView>
+    </objects>
+</document>
