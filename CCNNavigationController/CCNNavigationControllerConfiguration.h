@@ -63,7 +63,13 @@ typedef NS_ENUM(NSUInteger, CCNNavigationControllerTransitionStyle) {
     /**
      *  Designates that the pushed view will overlap the current visible view controller's view.
      */
-    CCNNavigationControllerTransitionStyleStack
+    CCNNavigationControllerTransitionStyleStack,
+    /**
+     *  Designates that the pushed view will be visibly warped out while the next view fades in on its end position.
+     *
+     *  Selecting this transition style will left the `transition` value without any effect.
+     */
+    CCNNavigationControllerTransitionStyleWarp
 };
 
 @interface CCNNavigationControllerConfiguration : NSObject
