@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F31a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
@@ -9,7 +8,7 @@
             <connections>
                 <outlet property="imageContainer" destination="QHa-hA-Csc" id="ehP-gr-a3M"/>
                 <outlet property="nextButton" destination="NkH-ep-aSV" id="NuK-0V-jma"/>
-                <outlet property="popToFiveButton" destination="Sbo-O3-XYm" id="P0i-n8-9Pf"/>
+                <outlet property="popToCalculatedMiddleImageButton" destination="Sbo-O3-XYm" id="bou-Ga-VCA"/>
                 <outlet property="popToRootButton" destination="2OD-T1-fNb" id="5on-aP-QJe"/>
                 <outlet property="previousButton" destination="V9o-JG-DJz" id="rQs-cv-jGX"/>
                 <outlet property="transitionPopup" destination="3tu-0B-Ths" id="pbd-KQ-jmS"/>
@@ -128,7 +127,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
-                        <action selector="popToFiveButtonAction:" target="-2" id="DkE-kk-0L1"/>
+                        <action selector="popToCalculatedMiddleImageButtonAction:" target="-2" id="5PR-1T-59c"/>
                     </connections>
                 </button>
             </subviews>

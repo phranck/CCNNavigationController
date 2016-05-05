@@ -10,7 +10,7 @@
 @property (weak) IBOutlet NSButton *previousButton;
 @property (weak) IBOutlet NSButton *nextButton;
 @property (weak) IBOutlet NSButton *popToRootButton;
-@property (weak) IBOutlet NSButton *popToFiveButton;
+@property (weak) IBOutlet NSButton *popToCalculatedMiddleImageButton;
 @property (weak) IBOutlet NSView *imageContainer;
 @property (weak) IBOutlet NSPopUpButton *transitionPopup;
 @property (weak) IBOutlet NSPopUpButton *transitionStylePopup;
@@ -57,7 +57,7 @@
 
 - (void)updateButtonTtile {
     NSInteger numberOfMiddleImage = ceil(self.counter/2);
-    self.popToFiveButton.title = [NSString stringWithFormat:@"Pop to Image #%@", @(numberOfMiddleImage)];
+    self.popToCalculatedMiddleImageButton.title = [NSString stringWithFormat:@"Pop to Image #%@", @(numberOfMiddleImage)];
 }
 
 #pragma mark - Button Actions
@@ -81,11 +81,13 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)popToFiveButtonAction:(id)sender {
+- (IBAction)popToCalculatedMiddleImageButtonAction:(id)sender {
     if (self.navigationController.viewControllers.count < 4) return;
     
-    NSViewController *numberFive = [self.navigationController.viewControllers objectAtIndex:4];
+    NSViewController *numberFive = [self.navigationController.viewControllers objectAtIndex:ceil(self.counter/2)-1];
     [self.navigationController popToViewController:numberFive animated:YES];
+    
+    [self updateButtonTtile];
 }
 
 - (IBAction)transitionPopupAction:(NSPopUpButton *)sender {
