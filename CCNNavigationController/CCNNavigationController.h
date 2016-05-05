@@ -226,7 +226,7 @@
 
 #pragma mark - NSViewController+CCNNavigationController
 @interface NSViewController (CCNNavigationController)
-@property (nonatomic, weak) CCNNavigationController *navigationController;
+@property (nonatomic, strong) CCNNavigationController *navigationController;
 @end
 
 // Each notification contains the navigation controller as notification object.
