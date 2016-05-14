@@ -37,13 +37,14 @@
 
 - (instancetype)init {
     self = [super init];
-    if (self) {
-        _backgroundColor     = [NSColor windowBackgroundColor];
-        _transition          = CCNNavigationControllerTransitionToLeft;
-        _transitionStyle     = CCNNavigationControllerTransitionStyleShift;
-        _transitionDuration  = 0.35;
-        _mediaTimingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    }
+    if (!self) return nil;
+
+    _backgroundColor     = [NSColor windowBackgroundColor];
+    _transition          = CCNNavigationControllerTransitionToLeft;
+    _transitionStyle     = CCNNavigationControllerTransitionStyleShift;
+    _transitionDuration  = 0.35;
+    _mediaTimingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
     return self;
 }
 
