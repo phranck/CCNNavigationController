@@ -197,43 +197,40 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     NSRect nextStartFrame = bounds;
     NSRect nextEndFrame = bounds;
     NSRect currentEndFrame = bounds;
-    
+
     [self.view addSubview:next.view];
     next.view.translatesAutoresizingMaskIntoConstraints = YES;
     next.view.autoresizingMask = self.view.autoresizingMask;
     next.view.wantsLayer = YES;
     next.view.layer.backgroundColor = self.configuration.backgroundColor.CGColor;
-    
-    
+
     CCNNavigationControllerTransition transition = self.configuration.transition;
     CCNNavigationControllerTransitionStyle transitionStyle = self.configuration.transitionStyle;
 
-    
     // default animation group
-    void (^animationGroup)(NSAnimationContext * context) = nil;
-    
-    
+    void (^animationGroup)(NSAnimationContext *context) = nil;
+
     switch (transitionStyle) {
         case CCNNavigationControllerTransitionStyleShift: {
             switch (transition) {
                 case CCNNavigationControllerTransitionToLeft: {
                     currentEndFrame.origin.x = (push ? -NSWidth(bounds) : NSWidth(bounds));
-                    nextStartFrame.origin.x  = (push ? NSWidth(bounds) : -NSWidth(bounds));
+                    nextStartFrame.origin.x = (push ? NSWidth(bounds) : -NSWidth(bounds));
                     break;
                 }
                 case CCNNavigationControllerTransitionToRight: {
                     currentEndFrame.origin.x = (push ? NSWidth(bounds) : -NSWidth(bounds));
-                    nextStartFrame.origin.x  = (push ? -NSWidth(bounds) : NSWidth(bounds));
+                    nextStartFrame.origin.x = (push ? -NSWidth(bounds) : NSWidth(bounds));
                     break;
                 }
                 case CCNNavigationControllerTransitionToDown: {
                     currentEndFrame.origin.y = (push ? -NSHeight(bounds) : NSHeight(bounds));
-                    nextStartFrame.origin.y  = (push ? NSHeight(bounds) : -NSHeight(bounds));
+                    nextStartFrame.origin.y = (push ? NSHeight(bounds) : -NSHeight(bounds));
                     break;
                 }
                 case CCNNavigationControllerTransitionToUp: {
                     currentEndFrame.origin.y = (push ? NSHeight(bounds) : -NSHeight(bounds));
-                    nextStartFrame.origin.y  = (push ? -NSHeight(bounds) : NSHeight(bounds));
+                    nextStartFrame.origin.y = (push ? -NSHeight(bounds) : NSHeight(bounds));
                     break;
                 }
             }
@@ -246,31 +243,31 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
             };
             break;
         }
-
+            
         case CCNNavigationControllerTransitionStyleStack: {
             switch (transition) {
                 case CCNNavigationControllerTransitionToLeft: {
                     currentEndFrame.origin.x = (push ? NSMinX(bounds) : NSWidth(bounds));
-                    nextStartFrame.origin.x  = (push ? NSWidth(bounds) : NSMinX(bounds));
+                    nextStartFrame.origin.x = (push ? NSWidth(bounds) : NSMinX(bounds));
                     break;
                 }
                 case CCNNavigationControllerTransitionToRight: {
                     currentEndFrame.origin.x = (push ? NSMinX(bounds) : -NSWidth(bounds));
-                    nextStartFrame.origin.x  = (push ? -NSWidth(bounds) : NSMinX(bounds));
+                    nextStartFrame.origin.x = (push ? -NSWidth(bounds) : NSMinX(bounds));
                     break;
                 }
                 case CCNNavigationControllerTransitionToDown: {
                     currentEndFrame.origin.y = (push ? NSMinY(bounds) : NSHeight(bounds));
-                    nextStartFrame.origin.y  = (push ? NSHeight(bounds) : NSMinY(bounds));
+                    nextStartFrame.origin.y = (push ? NSHeight(bounds) : NSMinY(bounds));
                     break;
                 }
                 case CCNNavigationControllerTransitionToUp: {
                     currentEndFrame.origin.y = (push ? NSMinY(bounds) : -NSHeight(bounds));
-                    nextStartFrame.origin.y  = (push ? -NSHeight(bounds) : NSMinY(bounds));
+                    nextStartFrame.origin.y = (push ? -NSHeight(bounds) : NSMinY(bounds));
                     break;
                 }
             }
-
+            
             [self.view bringSubViewToFront:(push ? next.view : current.view)];
             
             animationGroup = ^(NSAnimationContext *context) {
@@ -280,7 +277,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                 [[current.view animator] setFrame:currentEndFrame];
                 [[next.view animator] setFrame:nextEndFrame];
             };
-
+            
             break;
         }
             
@@ -291,11 +288,11 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
             CGFloat scaling = 3.2;
             
             if (push) {
-                nextStartFrame.origin.x    -= NSWidth(next.view.frame) * (scaling / 2);
-                nextStartFrame.origin.y    -= NSHeight(next.view.frame) * (scaling / 2);
-                nextStartFrame.size.width  += NSWidth(next.view.frame) * scaling;
+                nextStartFrame.origin.x -= NSWidth(next.view.frame) * (scaling / 2);
+                nextStartFrame.origin.y -= NSHeight(next.view.frame) * (scaling / 2);
+                nextStartFrame.size.width += NSWidth(next.view.frame) * scaling;
                 nextStartFrame.size.height += NSHeight(next.view.frame) * scaling;
-
+                
                 animationGroup = ^(NSAnimationContext *context) {
                     context.duration = (animated ? self.configuration.transitionDuration : 0);
                     context.timingFunction = self.configuration.mediaTimingFunction;
@@ -307,11 +304,10 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                     [[next.view animator] setFrame:nextEndFrame];
                     [[next.view animator] setAlphaValue:1.0];
                 };
-            }
-            else {
-                currentEndFrame.origin.x    -= NSWidth(current.view.frame) * (scaling / 2);
-                currentEndFrame.origin.y    -= NSHeight(current.view.frame) * (scaling / 2);
-                currentEndFrame.size.width  += NSWidth(current.view.frame) * scaling;
+            } else {
+                currentEndFrame.origin.x -= NSWidth(current.view.frame) * (scaling / 2);
+                currentEndFrame.origin.y -= NSHeight(current.view.frame) * (scaling / 2);
+                currentEndFrame.size.width += NSWidth(current.view.frame) * scaling;
                 currentEndFrame.size.height += NSHeight(current.view.frame) * scaling;
                 
                 animationGroup = ^(NSAnimationContext *context) {
@@ -326,11 +322,11 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                     [[current.view animator] setAlphaValue:0];
                 };
             }
-       }
+        }
     }
-
+    
     next.view.frame = nextStartFrame;
-
+    
     __weak typeof(self) wSelf = self;
     [NSAnimationContext runAnimationGroup:animationGroup
                         completionHandler:^{
@@ -340,12 +336,12 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                             [self navigationController:wSelf didShowViewController:next animated:animated];
                             
                             [current.view removeFromSuperview];
-                            
+
                             // remove possible injected navigation controller
                             if ([current respondsToSelector:@selector(setNavigationController:)]) {
                                 [current performSelector:@selector(setNavigationController:) withObject:nil];
                             }
-                            
+
                             if ([current respondsToSelector:@selector(viewDidDisappear:)]) {
                                 [(id<CCNViewController>)current viewDidDisappear:animated];
                             }
@@ -403,18 +399,10 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 
 @end
 
-
 #pragma mark - NSView+CCNNavigationController
 @implementation NSView (CCNNavigationController)
 - (BOOL)hasSubView:(NSView *)theSubView {
-    __block BOOL hasSubView = NO;
-    [self.subviews enumerateObjectsUsingBlock:^(NSView *enumView, NSUInteger idx, BOOL *stop) {
-        if ([enumView isEqual:theSubView]) {
-            hasSubView = YES;
-            *stop = YES;
-        }
-    }];
-    return hasSubView;
+    return [self.subviews containsObject:theSubView];
 }
 
 - (void)bringSubViewToFront:(NSView *)theSubView {
@@ -424,7 +412,6 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     }
 }
 @end
-
 
 #pragma mark - NSViewController+CCNNavigationController
 @implementation NSViewController (CCNNavigationController)
