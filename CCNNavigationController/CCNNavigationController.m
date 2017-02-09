@@ -139,7 +139,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     NSArray<NSViewController *> *poppedViewControllers = [NSArray arrayWithArray:_viewControllers];
     _viewControllers = [NSMutableArray arrayWithObject:rootController];
 
-    for (NSViewController *aViewController in _viewControllers) {
+    for (NSViewController *aViewController in poppedViewControllers) {
         if ([aViewController respondsToSelector:@selector(setNavigationController:)]) {
             [aViewController performSelector:@selector(setNavigationController:) withObject:nil];
         }
@@ -292,7 +292,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                 nextStartFrame.origin.y -= NSHeight(next.view.frame) * (scaling / 2);
                 nextStartFrame.size.width += NSWidth(next.view.frame) * scaling;
                 nextStartFrame.size.height += NSHeight(next.view.frame) * scaling;
-                
+
                 animationGroup = ^(NSAnimationContext *context) {
                     context.duration = (animated ? self.configuration.transitionDuration : 0);
                     context.timingFunction = self.configuration.mediaTimingFunction;
@@ -304,7 +304,8 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
                     [[next.view animator] setFrame:nextEndFrame];
                     [[next.view animator] setAlphaValue:1.0];
                 };
-            } else {
+            }
+            else {
                 currentEndFrame.origin.x -= NSWidth(current.view.frame) * (scaling / 2);
                 currentEndFrame.origin.y -= NSHeight(current.view.frame) * (scaling / 2);
                 currentEndFrame.size.width += NSWidth(current.view.frame) * scaling;
