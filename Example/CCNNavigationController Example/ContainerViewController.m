@@ -29,6 +29,7 @@
     self.navigationController = [[CCNNavigationController alloc] initWithRootViewController:imageVC];
     self.navigationController.view.translatesAutoresizingMaskIntoConstraints = NO;
     self.navigationController.delegate = self;
+    self.navigationController.configuration.transitionDuration = 5;
     
     
     [self.imageContainer addSubview:self.navigationController.view];
