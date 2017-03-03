@@ -27,9 +27,13 @@
  THE SOFTWARE.
  */
 
-#import "CCNNavigationControllerConfiguration.h"
+#import <AppKit/AppKit.h>
+#import <QuartzCore/QuartzCore.h>
+
 
 @class CCNNavigationController;
+@class CCNNavigationControllerConfiguration;
+
 
 #pragma mark CCNViewController Protocol
 @protocol CCNViewController <NSObject>
@@ -120,7 +124,7 @@
  *  @return The initialized navigation controller object or `nil` if there was a problem initializing the object.
  */
 - (instancetype)initWithRootViewController:(__kindof NSViewController *)viewController NS_DESIGNATED_INITIALIZER;
-- (instancetype)init NS_UNAVAILABLE;
+//- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
 
@@ -216,16 +220,22 @@
 
 @end
 
+
+
 #pragma mark - NSView+CCNAppKit
 @interface NSView (CCNNavigationController)
 - (BOOL)hasSubView:(NSView *)theSubView;
 - (void)bringSubViewToFront:(NSView *)theSubView;
 @end
 
+
+
 #pragma mark - NSViewController+CCNNavigationController
 @interface NSViewController (CCNNavigationController)
 @property (nonatomic, strong) CCNNavigationController *navigationController;
 @end
+
+
 
 // Each notification contains the navigation controller as notification object.
 // Each notification has a `userInfo` dictionary containing one object (the handled viewController) which is accessible via `CCNNavigationControllerNotificationUserInfoKey`.
@@ -234,3 +244,72 @@ FOUNDATION_EXPORT NSString *const CCNNavigationControllerDidShowViewControllerNo
 FOUNDATION_EXPORT NSString *const CCNNavigationControllerWillPopViewControllerNotification;
 FOUNDATION_EXPORT NSString *const CCNNavigationControllerDidPopViewControllerNotification;
 FOUNDATION_EXPORT NSString *const CCNNavigationControllerNotificationUserInfoKey;
+
+
+
+
+/**
+ *  Constant indicating the transition behaviour of push operations.
+ */
+typedef NS_ENUM(NSUInteger, CCNNavigationControllerTransition) {
+    CCNNavigationControllerTransitionToLeft = 0,        // Designates that a pushed view controller's view will be shifted from right to left.
+    CCNNavigationControllerTransitionToRight,           // Designates that a pushed view controller's view will be shifted from left to right.
+    CCNNavigationControllerTransitionToDown,            // Designates that a pushed view controller's view will be shifted from top to the bottom.
+    CCNNavigationControllerTransitionToUp               // Designates that a pushed view controller's view will be shifted from the bottom upwards.
+};
+
+/**
+ *  Constants indicating the transition style of push operations.
+ */
+typedef NS_ENUM(NSUInteger, CCNNavigationControllerTransitionStyle) {
+    CCNNavigationControllerTransitionStyleShift = 0,    // Designates that a popped view controller's view will be shifted out during a push operation while the new view is about beeing shown.
+    CCNNavigationControllerTransitionStyleStack,        // Designates that the pushed view will overlap the current visible view controller's view.
+};
+
+@interface CCNNavigationControllerConfiguration : NSObject
+
+/**
+ *  Creates and returns a `CCNNavigationControllerConfiguration` object with default values.
+ *
+ *  @return The newly created configuration container.
+ */
++ (instancetype)defaultConfiguration;
+
+/**
+ *  The background color of the navigation controller.
+ *
+ *  This color will be injected to every pushed viewController. The default is: `[NSColor windowBackgroundColor]`.
+ */
+@property (nonatomic, strong) NSColor *backgroundColor;
+
+/**
+ *  Property that controls the transition of push and pop of view controllers.
+ *
+ *  The default value is `CCNNavigationControllerTransitionToLeft`.
+ *
+ *  @see CCNNavigationControllerTransition
+ */
+@property (nonatomic, assign) CCNNavigationControllerTransition transition;
+
+/**
+ *  Property that controls the transition style of push and pop of view controllers.
+ *
+ *  The default value is `CCNNavigationControllerTransitionStyleShift`.
+ *
+ *  @see CCNNavigationControllerTransitionStyle
+ */
+@property (nonatomic, assign) CCNNavigationControllerTransitionStyle transitionStyle;
+
+/**
+ *  Property that controls the duration of any transition orpartion.
+ *
+ *  The default value is `0.35` seconds.
+ */
+@property (assign, nonatomic) NSTimeInterval transitionDuration;
+
+/**
+ *  Property that controls the timing function that has to be used during transition.
+ */
+@property (nonatomic, copy) CAMediaTimingFunction *mediaTimingFunction;
+
+@end

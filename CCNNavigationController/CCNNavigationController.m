@@ -30,7 +30,6 @@
  */
 
 #import <objc/runtime.h>
-
 #import "CCNNavigationController.h"
 
 NSString *const CCNNavigationControllerWillShowViewControllerNotification = @"CCNNavigationControllerWillShowViewControllerNotification";
@@ -39,6 +38,7 @@ NSString *const CCNNavigationControllerWillPopViewControllerNotification = @"CCN
 NSString *const CCNNavigationControllerDidPopViewControllerNotification = @"CCNNavigationControllerDidPopViewControllerNotification";
 
 NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewController";
+
 
 @interface CCNNavigationController () {
     NSMutableArray *_viewControllers;
@@ -72,7 +72,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 
     // setup configuration
     self.configuration = [CCNNavigationControllerConfiguration defaultConfiguration];
-    self.backgroundColor = self.configuration.backgroundColor;
+    self.backgroundColor = [NSColor clearColor];
 
     // inject navigation controller
     if ([viewController respondsToSelector:@selector(setNavigationController:)]) {
@@ -202,7 +202,6 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
     next.view.translatesAutoresizingMaskIntoConstraints = YES;
     next.view.autoresizingMask = self.view.autoresizingMask;
     next.view.wantsLayer = YES;
-    next.view.layer.backgroundColor = self.configuration.backgroundColor.CGColor;
 
     CCNNavigationControllerTransition transition = self.configuration.transition;
     CCNNavigationControllerTransitionStyle transitionStyle = self.configuration.transitionStyle;
@@ -280,50 +279,6 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
             
             break;
         }
-            
-        case CCNNavigationControllerTransitionStyleWarp: {
-            [self.view bringSubViewToFront:(push ? next.view : current.view)];
-            next.view.alphaValue = 0;
-            
-            CGFloat scaling = 3.2;
-            
-            if (push) {
-                nextStartFrame.origin.x -= NSWidth(next.view.frame) * (scaling / 2);
-                nextStartFrame.origin.y -= NSHeight(next.view.frame) * (scaling / 2);
-                nextStartFrame.size.width += NSWidth(next.view.frame) * scaling;
-                nextStartFrame.size.height += NSHeight(next.view.frame) * scaling;
-
-                animationGroup = ^(NSAnimationContext *context) {
-                    context.duration = (animated ? self.configuration.transitionDuration : 0);
-                    context.timingFunction = self.configuration.mediaTimingFunction;
-                    context.allowsImplicitAnimation = YES;
-                    
-                    [[current.view animator] setAlphaValue:0];
-                    
-                    next.view.layer.affineTransform = CGAffineTransformScale(next.view.layer.affineTransform, scaling, scaling);
-                    [[next.view animator] setFrame:nextEndFrame];
-                    [[next.view animator] setAlphaValue:1.0];
-                };
-            }
-            else {
-                currentEndFrame.origin.x -= NSWidth(current.view.frame) * (scaling / 2);
-                currentEndFrame.origin.y -= NSHeight(current.view.frame) * (scaling / 2);
-                currentEndFrame.size.width += NSWidth(current.view.frame) * scaling;
-                currentEndFrame.size.height += NSHeight(current.view.frame) * scaling;
-                
-                animationGroup = ^(NSAnimationContext *context) {
-                    context.duration = (animated ? self.configuration.transitionDuration : 0);
-                    context.timingFunction = self.configuration.mediaTimingFunction;
-                    context.allowsImplicitAnimation = YES;
-                    
-                    [[next.view animator] setAlphaValue:1.0];
-                    
-                    current.view.layer.affineTransform = CGAffineTransformScale(next.view.layer.affineTransform, scaling, scaling);
-                    [[current.view animator] setFrame:currentEndFrame];
-                    [[current.view animator] setAlphaValue:0];
-                };
-            }
-        }
     }
     
     next.view.frame = nextStartFrame;
@@ -400,6 +355,8 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 
 @end
 
+
+// =====================================================================================================================
 #pragma mark - NSView+CCNNavigationController
 @implementation NSView (CCNNavigationController)
 - (BOOL)hasSubView:(NSView *)theSubView {
@@ -414,6 +371,9 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 }
 @end
 
+
+
+// =====================================================================================================================
 #pragma mark - NSViewController+CCNNavigationController
 @implementation NSViewController (CCNNavigationController)
 - (CCNNavigationController *)navigationController {
@@ -423,4 +383,29 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 - (void)setNavigationController:(CCNNavigationController *)navigationController {
     objc_setAssociatedObject(self, @selector(navigationController), navigationController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+@end
+
+
+
+// =====================================================================================================================
+#pragma mark - CCNNavigationControllerConfiguration
+@implementation CCNNavigationControllerConfiguration
+
++ (instancetype)defaultConfiguration {
+    return [[[self class] alloc] init];
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (!self) return nil;
+
+    _backgroundColor     = [NSColor windowBackgroundColor];
+    _transition          = CCNNavigationControllerTransitionToLeft;
+    _transitionStyle     = CCNNavigationControllerTransitionStyleShift;
+    _transitionDuration  = 0.35;
+    _mediaTimingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+    return self;
+}
+
 @end
