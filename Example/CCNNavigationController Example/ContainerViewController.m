@@ -29,8 +29,8 @@
     self.navigationController = [[CCNNavigationController alloc] initWithRootViewController:imageVC];
     self.navigationController.view.translatesAutoresizingMaskIntoConstraints = NO;
     self.navigationController.delegate = self;
-    self.navigationController.configuration.transitionDuration = 5;
-    
+//    self.navigationController.configuration.transitionDuration = 5;
+
     
     [self.imageContainer addSubview:self.navigationController.view];
     
@@ -51,8 +51,7 @@
     [self.transitionStylePopup removeAllItems];
     [self.transitionStylePopup addItemsWithTitles:@[
         @"Shift views",
-        @"Stack all views",
-        @"Warp popped view"
+        @"Stack all views"
     ]];
 }
 
@@ -99,7 +98,6 @@
 - (IBAction)transitionStylePopupAction:(NSPopUpButton *)sender {
     CCNNavigationControllerTransitionStyle transitionStyle = [sender indexOfSelectedItem];
     self.navigationController.configuration.transitionStyle = transitionStyle;
-    self.transitionPopup.enabled = (transitionStyle != CCNNavigationControllerTransitionStyleWarp);
 }
 
 #pragma mrk - CCNNavigationControllerDelegate

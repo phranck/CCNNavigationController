@@ -14,7 +14,6 @@
 		FDDAEB801CD37DAF00E9B672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB7F1CD37DAF00E9B672 /* Assets.xcassets */; };
 		FDDAEB831CD37DAF00E9B672 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB811CD37DAF00E9B672 /* MainMenu.xib */; };
 		FDDAEB8F1CD37DE900E9B672 /* CCNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB8C1CD37DE900E9B672 /* CCNNavigationController.m */; };
-		FDDAEB901CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB8E1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m */; };
 		FDDAEB941CD37E6C00E9B672 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDAEB921CD37E6C00E9B672 /* ImageViewController.m */; };
 		FDDAEB951CD37E6C00E9B672 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDAEB931CD37E6C00E9B672 /* ImageViewController.xib */; };
 /* End PBXBuildFile section */
@@ -32,8 +31,6 @@
 		FDDAEB841CD37DAF00E9B672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDDAEB8B1CD37DE900E9B672 /* CCNNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNNavigationController.h; sourceTree = "<group>"; };
 		FDDAEB8C1CD37DE900E9B672 /* CCNNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNNavigationController.m; sourceTree = "<group>"; };
-		FDDAEB8D1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNNavigationControllerConfiguration.h; sourceTree = "<group>"; };
-		FDDAEB8E1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNNavigationControllerConfiguration.m; sourceTree = "<group>"; };
 		FDDAEB911CD37E6C00E9B672 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		FDDAEB921CD37E6C00E9B672 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		FDDAEB931CD37E6C00E9B672 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
@@ -109,8 +106,6 @@
 			children = (
 				FDDAEB8B1CD37DE900E9B672 /* CCNNavigationController.h */,
 				FDDAEB8C1CD37DE900E9B672 /* CCNNavigationController.m */,
-				FDDAEB8D1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.h */,
-				FDDAEB8E1CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m */,
 			);
 			name = CCNNavigationController;
 			path = ../../CCNNavigationController;
@@ -188,7 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDDAEB7E1CD37DAF00E9B672 /* main.m in Sources */,
-				FDDAEB901CD37DE900E9B672 /* CCNNavigationControllerConfiguration.m in Sources */,
 				FDD580491CDAD2D900531D71 /* ContainerViewController.m in Sources */,
 				FDDAEB8F1CD37DE900E9B672 /* CCNNavigationController.m in Sources */,
 				FDDAEB941CD37E6C00E9B672 /* ImageViewController.m in Sources */,
