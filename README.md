@@ -1,6 +1,6 @@
-## An Mac OS X Navigation Controller
+## An macOS Navigation Controller
 
-A Navigation Controller for Mac OS X that acts mostly like the counterpart on iOS - `UINavigationController`, using the excact method naming (with some additions).
+A Navigation Controller for macOS that acts mostly like the counterpart on iOS - `UINavigationController`, using the excact method naming (with some additions).
 
 The original idea for this controller came from [Heiko Dreyer's BFNavigationController](https://github.com/bfolder/BFNavigationController). First I forked his repo, but decided to make my own due to too many changes and additions that has been made. So, it might be possible that parts of this code looks slightly similar to his one. (-;
 
