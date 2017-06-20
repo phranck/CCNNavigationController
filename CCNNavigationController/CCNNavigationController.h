@@ -310,6 +310,6 @@ typedef NS_ENUM(NSUInteger, CCNNavigationControllerTransitionStyle) {
 /**
  *  Property that controls the timing function that has to be used during transition.
  */
-@property (nonatomic, copy) CAMediaTimingFunction *mediaTimingFunction;
+@property (nonatomic, assign) CAMediaTimingFunction *mediaTimingFunction;
 
 @end
