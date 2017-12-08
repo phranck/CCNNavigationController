@@ -381,7 +381,7 @@ NSString *const CCNNavigationControllerNotificationUserInfoKey = @"viewControlle
 }
 
 - (void)setNavigationController:(CCNNavigationController *)navigationController {
-    objc_setAssociatedObject(self, @selector(navigationController), navigationController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(navigationController), navigationController, OBJC_ASSOCIATION_ASSIGN);
 }
 @end
 
